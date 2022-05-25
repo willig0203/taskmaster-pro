@@ -19,6 +19,8 @@ Bootstrap
 Popper
 Moment
 Google Fonts
+OI
+OI-Plus
 
 ## Website
 https://willig0203.github.io/taskmaster-pro/
