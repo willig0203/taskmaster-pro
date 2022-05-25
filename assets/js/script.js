@@ -61,7 +61,7 @@ $("#task-form-modal").on("shown.bs.modal", function () {
 });
 
 // save button in modal was clicked
-$("#task-form-modal .btn-primary").click(function () {
+$("#task-form-modal .btn-save").click(function () {
   // get form values
   var taskText = $("#modalTaskDescription").val();
   var taskDate = $("#modalDueDate").val();
@@ -172,44 +172,45 @@ $("#remove-tasks").on("click", function () {
 
 // jQuery Ui drag and drop
 $(".card .list-group").sortable({
+  // enable dragging across lists
   connectWith: $(".card .list-group"),
   scroll: false,
   tolerance: "pointer",
   helper: "clone",
-  activate: function (event) {
-    console.log("activate", this);
+  activate: function(event, ui) {
+    $(this).addClass("dropover");
+    $(".bottom-trash").addClass("bottom-trash-drag");
   },
-  deactivate: function (event) {
-    console.log("deactivate", this);
+  deactivate: function(event, ui) {
+    $(this).removeClass("dropover");
+    $(".bottom-trash").removeClass("bottom-trash-drag");
   },
-  over: function (event) {
-    console.log("over", event.target);
+  over: function(event) {
+    $(event.target).addClass("dropover-active");
   },
-  out: function (event) {
-    console.log("out", event.target);
+  out: function(event) {
+    $(event.target).removeClass("dropover-active");
   },
-  update: function (event) {
-    // array to store the task data in
+  update: function() {
     var tempArr = [];
 
     // loop over current set of children in sortable list
-    $(this).children().each(function () {
-      var text = $(this)
-        .find("p")
-        .text()
-        .trim();
-
-      var date = $(this)
-        .find("span")
-        .text()
-        .trim();
-
-      // add task data to the temp array as an object
-      tempArr.push({
-        text: text,
-        date: date
+    $(this)
+      .children()
+      .each(function() {
+        // save values in temp array
+        tempArr.push({
+          text: $(this)
+            .find("p")
+            .text()
+            .trim(),
+          date: $(this)
+            .find("span")
+            .text()
+            .trim()
+        });
       });
-    });
+
     // trim down list's ID to match object property
     var arrName = $(this)
       .attr("id")
@@ -226,14 +227,14 @@ $("#trash").droppable({
   accept: ".card .list-group-item",
   tolerance: "touch",
   drop: function (event, ui) {
-    console.log("drop");
     ui.draggable.remove();
+    $("#bottom-trash").removeClass("bottom-trash-active");
   },
   over: function (event, ui) {
-    console.log("over");
+    $("#bottom-trash").addClass("bottom-trash-active");
   },
   out: function (event, ui) {
-    console.log("out");
+    $("#bottom-trash").removeClass("bottom-trash-active");
   }
 });
 
