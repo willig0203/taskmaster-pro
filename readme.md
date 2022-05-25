@@ -1,21 +1,29 @@
 # My taskmaster-pro
 
 ## Purpose
-Generate a unique password based on the following options:
-- Lowercase Letters
-- Uppercase Letters
-- Numbers
-- Special Characters
-- Password Length can be between 8 and 128: 
-
+Manage tasks between four status columns:
+- ToDo
+- In Progress
+- In Review
+- Done
+- Drag and Drop functionality
 
 ## Built With
 HTML
 CSS
 Javascript
+jQuery
+jQuery UI
+jQuery UI Touch Punch
+Bootstrap
+Popper
+Moment
+Google Fonts
+OI
+OI-Plus
 
 ## Website
-https://willig0203.github.io/passwordGenerator/
+https://willig0203.github.io/taskmaster-pro/
 
 ## Contribution
 Gary Williams (Trademark GarywareLLC).
