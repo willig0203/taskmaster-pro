@@ -83,7 +83,7 @@ $("#task-form-modal .btn-save").click(function () {
 });
 
 // task text was clicked
-$(".list-group").on("click", "p", function () {
+$(".list-group").on("click", "p", function () {debugger
   // get current text of p element
   var text = $(this)
     .text()
